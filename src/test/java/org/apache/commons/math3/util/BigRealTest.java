@@ -163,17 +163,26 @@ public class BigRealTest {
 
     @Test
     public void testEqualsAndHashCode() {
+
         BigReal zero = new BigReal(0.0);
         BigReal nullReal = null;
         Assert.assertTrue(zero.equals(zero));
         Assert.assertFalse(zero.equals(nullReal));
         Assert.assertFalse(zero.equals(Double.valueOf(0)));
+
         BigReal zero2 = new BigReal(0.0);
         Assert.assertTrue(zero.equals(zero2));
         Assert.assertEquals(zero.hashCode(), zero2.hashCode());
+
         BigReal one = new BigReal(1.0);
         Assert.assertFalse((one.equals(zero) || zero.equals(one)));
         Assert.assertTrue(one.equals(BigReal.ONE));
+
+        // new test case for fix MATH-1617 issue (https://issues.apache.org/jira/browse/MATH-1617)
+        BigReal oneWithScaleOne = new BigReal(new BigDecimal("1.0"));
+        BigReal oneWithScaleTwo = new BigReal(new BigDecimal("1.00"));
+        Assert.assertTrue(oneWithScaleOne.equals(oneWithScaleTwo));
+        Assert.assertEquals(oneWithScaleOne.hashCode(), oneWithScaleTwo.hashCode());
     }
 
     @Test

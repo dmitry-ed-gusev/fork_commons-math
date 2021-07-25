@@ -306,16 +306,24 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
             return true;
         }
 
-        if (other instanceof BigReal){
-            return d.equals(((BigReal) other).d);
+        // updated due to fix of MATH-1617 (https://issues.apache.org/jira/browse/MATH-1617)
+        // if (other instanceof BigReal){
+        //     return d.equals(((BigReal) other).d);
+        // }
+        if (other instanceof BigReal) {
+            return d.compareTo(((BigReal) other).d) == 0;
         }
+
         return false;
     }
 
     /** {@inheritDoc} */
     @Override
     public int hashCode() {
-        return d.hashCode();
+
+        // updated due to fix of MATH-1617 (https://issues.apache.org/jira/browse/MATH-1617)
+        // return d.hashCode();
+        return Double.hashCode(d.doubleValue());
     }
 
     /** {@inheritDoc} */

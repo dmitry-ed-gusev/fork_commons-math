@@ -24,7 +24,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.commons</groupId>
   <artifactId>commons-math3</artifactId>
-  <version>3.7-SNAPSHOT</version>
+  <version>3.6.1-fix1617</version>
   <name>Apache Commons Math</name>
 
   <inceptionYear>2003</inceptionYear>
@@ -383,8 +383,11 @@
     <commons.jira.id>MATH</commons.jira.id>
     <commons.jira.pid>12310485</commons.jira.pid>
     <commons.encoding>UTF-8</commons.encoding>
-    <maven.compiler.source>1.5</maven.compiler.source>
-    <maven.compiler.target>1.5</maven.compiler.target>
+
+    <!-- Updated 1.5 -> 1.8 due to fix of MATH-1617 (https://issues.apache.org/jira/browse/MATH-1617) -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
     <math.pmd.version>3.5</math.pmd.version>
     <math.findbugs.version>3.0.2</math.findbugs.version>
     <math.checkstyle.version>2.17</math.checkstyle.version>
